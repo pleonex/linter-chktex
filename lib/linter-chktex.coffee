@@ -9,11 +9,12 @@ class LinterChktex extends Linter
   # list/tuple of strings. Names should be all lowercase.
   @syntax: 'text.tex.latex'
 
+  # Set the current directory to the project path
+  cwd: atom.project.getPaths() || @cwd
+
   # A string, list, tuple or callable that returns a string, list or tuple,
   # containing the command line (with arguments) used to lint.
-
-  # TODO: Make error/warning preferences configurable
-  cmd: ['chktex', '-I0', '-wall','-n22','-n30','-e16','-f%l:%c:%d %k %k %n: %m\\n']
+  cmd: ['chktex', '-I0', '-wall', '-l.chktexrc', '-f%l:%c:%d %k %k %n: %m\\n']
 
   linterName: 'chktex'
 
